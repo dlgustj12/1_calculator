@@ -42,9 +42,7 @@ public class InputParser {
 
         List<Integer> numbers = new ArrayList<>();
 
-        for (int i = 0; i < tokens.length; i++) {
-
-            String temp = tokens[i];
+        for (String temp : tokens) {
 
             numbers.add(Integer.parseInt(temp));
         }
