@@ -15,8 +15,8 @@
 
 클래스 설계 : 
 - CalculatorApplication : main 및 사용자 입출력 -> main(), run()
-- Validator : 문자열 유효성 검증 -> checkNull(String), checkEmpty(String), checkOperator(String)
-- Splitter : 문자열 분리 -> splitNum(String), splitOperator(String)
+- InputValidator : 문자열 유효성 검증 -> checkNull(String), checkEmpty(String), checkOperator(String)
+- InputParser : 문자열 분리 -> splitNum(String), splitOperator(String)
 - Calculator : 사칙연산 수행 지시 -> calculate(Operation, List<Int>), 
 - Opration : 실제 사칙연산 수행 -> Operate(int, int)
 
