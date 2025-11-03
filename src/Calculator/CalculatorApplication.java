@@ -15,30 +15,37 @@ public class CalculatorApplication {
 
     public void run(){
 
-        InputValidator validator = new InputValidator();
-        InputParser parser = new InputParser(validator);
-        Calculator calculator = new Calculator();
-
         try(Scanner scanner = new Scanner(System.in)){
 
-            System.out.print("계산할 입력 문자열 입력 : ");
-            String input = scanner.nextLine();
+            InputValidator validator = new InputValidator();
+            InputParser parser = new InputParser(validator);
+            Calculator calculator = new Calculator();
 
-            //1. 유효성 검사
-            validator.checkNullOrEmpty(input);
-            validator.checkOnlyOneOperator(input);
+            while(true){
+
+                System.out.print("계산할 입력 문자열 입력(종료는 -1) : ");
+                String input = scanner.nextLine();
+                if(input.equals("-1"))
+                    return;
+
+                //1. 유효성 검사
+                validator.checkNullOrEmpty(input);
+                validator.checkOnlyOneOperator(input);
 
 
-            //2. 숫자집합과 연산자 분리
-            List<Integer> numList = parser.parseNumbers(input);
-            Operation op = parser.parseOperator(input);
+                //2. 숫자집합과 연산자 분리
+                List<Integer> numList = parser.parseNumbers(input);
+                Operation op = parser.parseOperator(input);
 
-            //3.연산
-            double result = calculator.calculate(numList, op);
-            System.out.println(result);
+                //3.연산
+                double result = calculator.calculate(numList, op);
 
+                if(result % 1 == 0.0){
+                    System.out.println((int)result);
+                }
+                else System.out.printf("%.1f\n",result);
 
+            }
         }
-
     }
 }

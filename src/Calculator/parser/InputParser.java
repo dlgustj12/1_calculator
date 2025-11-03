@@ -2,8 +2,6 @@ package Calculator.parser;
 
 import Calculator.domain.Operation;
 import Calculator.validator.InputValidator;
-
-import javax.xml.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 

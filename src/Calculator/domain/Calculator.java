@@ -9,7 +9,7 @@ public class Calculator {
     public double calculate(List<Integer> numList, Operation op){
 
 
-        double result = numList.get(0); //첫번째 숫자 -> 초깃값
+        double result = numList.get(0); //첫번째 숫자 -> 초기값
 
         for (int i = 1; i < numList.size(); i++) {
             int nextNum = numList.get(i);
