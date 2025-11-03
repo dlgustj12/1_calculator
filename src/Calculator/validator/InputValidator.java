@@ -19,7 +19,7 @@ public class InputValidator {
     public void checkSeparator(String input){
         boolean flag = input.equals(",") || input.equals(":");
         if(!flag){
-            throw new IllegalArgumentException("error : Allowed Separator -> only (,),(:)");
+            throw new IllegalArgumentException("error : Allowed Separators are only (,),(:)");
         }
     }
 
@@ -34,9 +34,8 @@ public class InputValidator {
 
         boolean isOperator = input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/");
         if(!isOperator){
-            throw new IllegalArgumentException("허용 되지 않는 연산 기호 : " + input);
+            throw new IllegalArgumentException("error : Not allowed Symbol: " + input);
         }
     }
-
 
 }
