@@ -28,16 +28,12 @@ public class CalculatorApplication {
                 if(input.equals("-1"))
                     return;
 
-                //1. 유효성 검사
-                validator.checkNullOrEmpty(input);
-                validator.checkOnlyOneOperator(input);
 
-
-                //2. 숫자집합과 연산자 분리
+                //1. 숫자집합과 연산자 분리(그 과정에서 유효성 검사
                 List<Integer> numList = parser.parseNumbers(input);
                 Operation op = parser.parseOperator(input);
 
-                //3.연산
+                //2.연산
                 double result = calculator.calculate(numList, op);
 
                 if(result % 1 == 0.0){
