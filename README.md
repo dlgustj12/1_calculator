@@ -15,8 +15,8 @@
 
 클래스 설계 : 
 - CalculatorApplication : main 및 사용자 입출력 -> main(), run()
-- Validator : 문자열 유효성 검증 -> checkNull(String), checkEmpty(String), checkOperator(String)
-- Splitter : 문자열 분리 -> splitNum(String), splitOperator(String)
+- InputValidator : 문자열 유효성 검증 -> checkNull(String), checkEmpty(String), checkOperator(String)
+- InputParser : 문자열 분리 -> splitNum(String), splitOperator(String)
 - Calculator : 사칙연산 수행 지시 -> calculate(Operation, List<Int>), 
 - Opration : 실제 사칙연산 수행 -> Operate(int, int)
 
@@ -25,3 +25,9 @@
 2. (,),(;) 이외의 구분자를 입력받았을 경우
 3. 마지막 문자가 사칙연산 기호가 아닌경우
 4. 0으로 나누는 경우
+
+순서 :
+1. 유호성 검증 로직 구현
+2. 문자열 분리 로직 구현
+3. 사칙연산 로직 구현
+4. 리펙터링
