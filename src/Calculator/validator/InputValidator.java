@@ -3,15 +3,40 @@ package Calculator.validator;
 //데이터 유효성 검증
 public class InputValidator {
 
-    public void CheckNullOrEmpty(String input){
+    //1. 문자열이 null 경우 or 허용되지 않은 Empty 존재하는 경우
+    public void checkNullOrEmpty(String input){
 
         if(input == null){
-            throw new IllegalArgumentException("문자열이 null 입니다.");
+            throw new IllegalArgumentException("error : input -> null");
         }
 
-        //input.trim() -> input의 양쪽에 있는 공백(탭,줄바꿈 포함)을 제거함->
         if(input.trim().isEmpty()){
-            throw new IllegalArgumentException("문자열에 허용되지 않는 공백이 존재합니다.");
+            throw new IllegalArgumentException("error : input -> empty");
         }
     }
+
+    //2. (,),(:) 이외의 구분자를 입력받았을 경우
+    public void checkSeparator(String input){
+        boolean flag = input.equals(",") || input.equals(":");
+        if(!flag){
+            throw new IllegalArgumentException("error : Allowed Separator -> only (,),(:)");
+        }
+    }
+
+    //3. 마지막 문자가 사칙연산 기호가 아닌 경우
+    public void checkOnlyOneOperator(String input){
+        String lastChar = input.substring(input.length() - 1);
+
+        checkOperator(lastChar);
+
+    }
+    public void checkOperator(String input){
+
+        boolean isOperator = input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/");
+        if(!isOperator){
+            throw new IllegalArgumentException("허용 되지 않는 연산 기호 : " + input);
+        }
+    }
+
+
 }
