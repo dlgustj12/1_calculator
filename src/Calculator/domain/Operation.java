@@ -1,5 +1,7 @@
 package Calculator.domain;
 
+import Calculator.validator.InputValidator;
+
 //실제 사칙연산 수행
 public enum Operation {
 
@@ -40,6 +42,9 @@ public enum Operation {
     public abstract double calculate(double a, double b);
 
     public double apply(double a, double b){
+        if(this == DIVIDE){
+            InputValidator.checkDivByZero(b);
+        }
         return calculate(a,b);
     }
 
@@ -47,10 +52,8 @@ public enum Operation {
 
         Operation[] allOperations = Operation.values();
 
-        for (int i = 0; i < allOperations.length; i++) {
-            Operation op = allOperations[i];
-
-            if(op.symbol.equals(symbol)){
+        for (Operation op : allOperations) {
+            if (op.symbol.equals(symbol)) {
                 return op;
             }
         }
