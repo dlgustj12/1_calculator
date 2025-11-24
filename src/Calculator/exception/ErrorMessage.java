@@ -20,6 +20,6 @@ public enum ErrorMessage {
     }
 
     public String getMassage(){
-        return getMassage();
+        return this.massage();
     }
 }

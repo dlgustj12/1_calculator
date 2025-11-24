@@ -1,16 +1,16 @@
 package calculator.parser;
 
 import calculator.domain.Operation;
-import calculator.validator.InputValidator;
+import calculator.validator.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
 //문자열을 유요한 데이터로 변환
 public class InputParser {
-    private  final InputValidator validator;
+    private  final Validator validator;
 
     //DI
-    public InputParser(InputValidator validator) {
+    public InputParser(Validator validator) {
         this.validator = validator;
     }
 

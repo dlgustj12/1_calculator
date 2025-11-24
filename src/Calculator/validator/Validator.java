@@ -3,7 +3,7 @@ package calculator.validator;
 import Calculator.domain.Operation;
 
 //데이터 유효성 검증
-public class InputValidator {
+public class Validator {
 
     //1. 문자열이 null 경우 or 2. 허용되지 않은 Empty 인경우
     public void checkNullOrEmpty(String input){
