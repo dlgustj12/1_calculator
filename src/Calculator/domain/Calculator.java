@@ -1,10 +1,11 @@
-package Calculator.domain;
+package calculator.domain;
 
 
 import java.util.List;
 
 //연산 수행 지시
 public class Calculator {
+
 
     public double calculate(List<Integer> numList, Operation op){
 

@@ -1,7 +1,7 @@
-package Calculator.parser;
+package calculator.parser;
 
-import Calculator.domain.Operation;
-import Calculator.validator.InputValidator;
+import calculator.domain.Operation;
+import calculator.validator.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 

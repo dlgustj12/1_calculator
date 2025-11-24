@@ -1,9 +1,9 @@
-package Calculator;
+package calculator;
 
-import Calculator.domain.Calculator;
-import Calculator.domain.Operation;
-import Calculator.parser.InputParser;
-import Calculator.validator.InputValidator;
+import calculator.domain.Calculator;
+import calculator.domain.Operation;
+import calculator.parser.InputParser;
+import calculator.validator.InputValidator;
 
 import java.util.List;
 import java.util.Scanner;
@@ -28,20 +28,25 @@ public class CalculatorApplication {
                 if(input.equals("-1"))
                     return;
 
+                try {
+                    //1. 숫자집합과 연산자 분리(그 과정에서 유효성 검사)
+                    List<Integer> numList = parser.parseNumbers(input);
+                    Operation op = parser.parseOperator(input);
 
-                //1. 숫자집합과 연산자 분리(그 과정에서 유효성 검사
-                List<Integer> numList = parser.parseNumbers(input);
-                Operation op = parser.parseOperator(input);
+                    //2.연산
+                    double result = calculator.calculate(numList, op);
 
-                //2.연산
-                double result = calculator.calculate(numList, op);
+                    if (result % 1 == 0.0) {
+                        System.out.println((int) result);
+                    } else System.out.printf("%.1f\n", result);
 
-                if(result % 1 == 0.0){
-                    System.out.println((int)result);
+
+                } catch (Exception e) {
+                    System.err.println("알 수 없는 오류 발생 : " + e.getMessage());
                 }
-                else System.out.printf("%.1f\n",result);
-
             }
         }
     }
 }
+//일레걸 인셉션
+// 정적 메서드
