@@ -1,22 +1,27 @@
 package calculator.input;
 
+import calculator.validator.Validator;
+
 import java.util.Scanner;
 
 public class Input {
-    private static Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner;
 
-    // 인스턴스 생성 막음
-    private Input(){}
-
-    public static String nextLine(){
-
-        //이미 생성된 scanner 사용
-        String input = scanner.nextLine();
-
-        Validator.validateAll(input);
+    public Input(){
+        this.scanner = new Scanner(System.in);
     }
 
-    public static void close(){
+    public String nextLine(){
+        System.out.println("계산 내용 입력 : ");
+
+        String input = this.scanner.nextLine();
+
+        Validator.validateAll(input);
+
+        return input;
+    }
+
+    public void close(){
         if(scanner != null){
             scanner.close();
         }

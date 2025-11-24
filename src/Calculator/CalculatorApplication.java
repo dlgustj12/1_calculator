@@ -4,14 +4,11 @@ import calculator.input.Input;
 
 public class CalculatorApplication {
     public static void main(String[] args) {
-        new CalculatorApplication().run();
-    }
-
-    public void run(){
-        String inputData = Input.nextLine();
+        Input input = new Input();
+        String inputData = input.nextLine();
 
         //연산 calculate(inputData);
 
-        Input.close();
+        input.close();
     }
 }
