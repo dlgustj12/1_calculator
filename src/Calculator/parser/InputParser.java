@@ -1,33 +1,41 @@
 package calculator.parser;
 
 import calculator.domain.Operation;
-import calculator.validator.Validator;
+import calculator.validator.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 
 //문자열을 유요한 데이터로 변환
 public class InputParser {
-    private  final Validator validator;
+
+    //1. 파싱 결과: numList, op
+    private List<Integer> numList;
+    private Operation operation;
 
     //DI
-    public InputParser(Validator validator) {
-        this.validator = validator;
+    public void parse(String input) {
+        this.numList = parseNumbers(input);
+        this.operation = parseOperator(input);
+    }
+
+    public List<Integer> getNumList(){
+        return this.numList;
+    }
+    public Operation getOperation(){
+        return this.operation;
     }
 
     //문자열에서 연산자 분리 -> Operation Enum 객체로 변환
-    public Operation parseOperator(String input){
-        validator.checkOnlyOneOperator(input); //input 마지막이 하나의 연산자로만 되어있는지
+    public Operation parseOperator(String input){//input 마지막이 하나의 연산자로만 되어있는지
 
         String operatorSymbol = input.substring(input.length() - 1);
 
-        validator.checkOperator(operatorSymbol);
 
         return Operation.fromSymbol(operatorSymbol);
     }
 
     //연산자 파트 제거한 numPart 추출
     private String getNumPart(String input){
-        validator.checkNullOrEmpty(input);
         String numPart = input.substring(0,input.length()-1);
 
         return numPart.trim();
@@ -35,8 +43,6 @@ public class InputParser {
 
     //문자열의 숫자부분 List<Integer>로 변환
     public List<Integer> parseNumbers(String input){
-        validator.checkNullOrEmpty(input); // null/공백 체크
-        validator.checkOnlyOneOperator(input);
 
         String numPart = getNumPart(input);
 

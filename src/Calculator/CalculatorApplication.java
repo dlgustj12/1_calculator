@@ -1,14 +1,20 @@
 package calculator;
-import calculator.input.Input;
+import calculator.IOP.Input;
+import calculator.IOP.Output;
 
 
 public class CalculatorApplication {
     public static void main(String[] args) {
+
         Input input = new Input();
+        Output output = new Output();
+
         String inputData = input.nextLine();
 
-        //연산 calculate(inputData);
+
+        //output.printResult(result);
 
         input.close();
     }
 }
+

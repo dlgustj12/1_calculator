@@ -4,35 +4,39 @@ import calculator.exception.ErrorException;
 import calculator.exception.ErrorMessage;
 
 //데이터 유효성 검증
-public class Validator {
+public class InputValidator {
 
-    public static void validateAll(String ipnut){
-        checkNullOrEmpty(input);
+    public static void validateAll(String input){
+        checkNull(input);
+        checkEmpty(input);
+        checkOnlyOneOperator(input);
+        
     }
 
-    //1. 문자열이 null 경우 or 2. 허용되지 않은 Empty 인경우
-    public static void checkNullOrEmpty(String input){
-
+    // 1. 문자열이 null 경우 
+    private static void checkNull(String input){
         if(input == null){
             throw new ErrorException(ErrorMessage.INPUT_NULL);
         }
-
+    }
+    // 2. 허용되지 않은 Empty 인경우
+    private static void checkEmpty(String input){
         if(input.trim().isEmpty()){
             throw new ErrorException(ErrorMessage.INPUT_EMPTY);
         }
     }
 
     //3. 마지막 문자가 사칙연산 기호가 아닌 경우
-    public static void checkOnlyOneOperator(String input){
+    private static void checkOnlyOneOperator(String input){
         String lastChar = input.substring(input.length() - 1);
 
         checkOperator(lastChar);
     }
-    public static void checkOperator(String input){
+    private static void checkOperator(String input){
 
         boolean isOperator = input.equals("+") || input.equals("-") || input.equals("*") || input.equals("/");
         if(!isOperator){
-            throw new IllegalArgumentException("error : Not allowed Symbol: " + input);
+            throw new ErrorException(ErrorMessage.NA_OPERATOR);
         }
     }
 

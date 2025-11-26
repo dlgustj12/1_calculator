@@ -1,6 +1,6 @@
-package calculator.input;
+package calculator.IOP;
 
-import calculator.validator.Validator;
+import calculator.validator.InputValidator;
 
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class Input {
 
         String input = this.scanner.nextLine();
 
-        Validator.validateAll(input);
+        InputValidator.validateAll(input);
 
         return input;
     }
