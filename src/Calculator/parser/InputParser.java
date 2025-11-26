@@ -1,7 +1,6 @@
 package calculator.parser;
 
 import calculator.domain.Operation;
-import calculator.validator.InputValidator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,6 @@ public class InputParser {
     private List<Integer> numList;
     private Operation operation;
 
-    //DI
     public void parse(String input) {
         this.numList = parseNumbers(input);
         this.operation = parseOperator(input);

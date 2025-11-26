@@ -1,6 +1,7 @@
 package calculator;
 import calculator.IOP.Input;
 import calculator.IOP.Output;
+import calculator.controller.CalculatorController;
 
 
 public class CalculatorApplication {
@@ -8,13 +9,22 @@ public class CalculatorApplication {
 
         Input input = new Input();
         Output output = new Output();
+        CalculatorController controller = new CalculatorController();
 
-        String inputData = input.nextLine();
+        while(true){
 
+            try{
+                //input
+                String inputData = input.nextLine();
+                //controller
+                String[] result = controller.controller(inputData);
+                //output
+                output.printResult(result);
 
-        //output.printResult(result);
-
-        input.close();
+            } catch(IllegalArgumentException e){
+                System.err.println(e.getMessage());
+            }
+        }
     }
 }
 

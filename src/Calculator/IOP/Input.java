@@ -16,7 +16,11 @@ public class Input {
 
         String input = this.scanner.nextLine();
 
-        InputValidator.validateAll(input);
+        if((input.trim().equals("-1"))){
+            close();
+            System.exit(0);
+        }
+
 
         return input;
     }

@@ -1,6 +1,6 @@
 package calculator.domain;
 
-import Calculator.validator.InputValidator;
+import calculator.validator.InputValidator;
 
 //실제 사칙연산 수행
 public enum Operation {
@@ -37,6 +37,10 @@ public enum Operation {
         this.symbol = symbol;
     }
 
+    public String getSymbol(){
+        return symbol;
+    }
+
     //추상 메서드 정의 (abstract)
     //추상메서드가 없으면 PLUS,MINUS 같은 Operation Enum 상수는 각각의 고유한 계산 로직을 오버라이딩(구현)할수가 없음
     public abstract double calculate(double a, double b);
@@ -57,6 +61,6 @@ public enum Operation {
                 return op;
             }
         }
-        throw new IllegalArgumentException("error: 연산기호 오류(fromSymbol)");
+        return null;
     }
 }

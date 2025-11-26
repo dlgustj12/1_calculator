@@ -17,6 +17,7 @@ public class Calculator {
             result = op.apply(result, nextNum);
         }
 
+        result = Math.round( result * 10) / 10.0;
         return result;
 
     }

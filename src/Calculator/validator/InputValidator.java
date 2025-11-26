@@ -10,7 +10,7 @@ public class InputValidator {
         checkNull(input);
         checkEmpty(input);
         checkOnlyOneOperator(input);
-        
+        checkSeparator(input);
     }
 
     // 1. 문자열이 null 경우 
@@ -19,6 +19,7 @@ public class InputValidator {
             throw new ErrorException(ErrorMessage.INPUT_NULL);
         }
     }
+
     // 2. 허용되지 않은 Empty 인경우
     private static void checkEmpty(String input){
         if(input.trim().isEmpty()){
@@ -43,15 +44,16 @@ public class InputValidator {
     //4. 0으로 나누는 경우
     public static void checkDivByZero(double num){
         if(num == 0.0){
-            throw new IllegalArgumentException("error : can't divide by 0");
+            throw new ErrorException(ErrorMessage.DIV_ZERO);
         }
     }
 
     //어떻게 쓰지... (,),(:) 이외의 구분자를 입력받았을 경우
-    public static void checkSeparator(char ch){
-        boolean flag = ch == ',' || ch == ':';
-        if(!flag){
-            throw new IllegalArgumentException("error : Allowed Separators are only (,),(:)");
+    public static void checkSeparator(String input){
+        String numPartWithSeparators = input.substring(0, input.length() - 1).trim();
+        if (numPartWithSeparators.matches(".*[^0-9,:].*")) {
+            // 허용되지 않은 문자(예: 세미콜론 ';', 문자 'a' 등)가 발견되면 예외 발생
+            throw new ErrorException(ErrorMessage.NA_SPECTOR);
         }
     }
 }
